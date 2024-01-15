@@ -1,8 +1,8 @@
 {
-  "my-module-page": {
-	"scope": "javascript,typescript,javascriptreact",
-    "prefix": "mpage",
-    "body": [
+	"my-module-page": {
+		"scope": "javascript,typescript,javascriptreact",
+		"prefix": "mpage",
+		"body": [
 			"import clsx from 'clsx';",
 			"import styles from './${TM_DIRECTORY/^.+\\\\(.*)$/$1/}.module.scss';",
 			"",
@@ -11,7 +11,7 @@
 			"\t\t <h1>${TM_DIRECTORY/^.+\\\\(.*)$/${1:/capitalize}/}</h1>",
 			"\t\t$3",
 			"</${2:section}>",
-			"}"     
-    ]  
-  }
+			"}"
+		]
+	}
 }

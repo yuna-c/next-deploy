@@ -1,16 +1,19 @@
 {
-  "my-module-page": {
+	"my-module-slug": {
 		"scope": "javascript,typescript,javascriptreact",
-    "prefix": "mpage",
-    "body": [
+		"prefix": "mslug",
+		"body": [
 			"import clsx from 'clsx';",
-			"import styles from './${TM_DIRECTORY/^.+\\\\(.*)$/$1/}.module.scss';",
+			"import styles from './${1/(.)/${1:/downcase}/}.module.scss';",
 			"",
-			"export default function ${TM_DIRECTORY/^.+\\\\(.*)$/${1:/capitalize}/}(){",
-			"\treturn <${2:div} className={clsx(styles.${TM_DIRECTORY/^.+\\\\(.*)$/$3/})}></${2:div}>",
-			"}"     
-    ]  
-  }
+			"export default function ${1/(.)/${1:/capitalize}/}(){",
+			"\treturn <${2:section} className={clsx(styles.${1/(.)/${1:/downcase}/})}>",
+			"\t\t<h1>${1/(.)/${1:/capitalize}/}</h1>",
+			"\t\t$3",
+			"</${2:section}>",
+			"}"
+		]
+	}
 }
 
-\src\app\youtube
+// 띄어쓰기로 에밋기능 풀었다가 뒤로 한칸 가고 탭으로 대글자화

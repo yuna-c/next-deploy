@@ -1,10 +1,7 @@
 {
 	"my-module-tag": {
 		"scope": "javascript,typescript,javascriptreact",
-		"prefix":"mtag",
-		"body": [
-			"<${1:div} className={clsx(styles.$2)}>$3</${1:div}>",
-			"$4"
-		]
+		"prefix": "mtag",
+		"body": ["<${1:div} className={clsx(styles.$2)}>$3</${1:div}>", "$4"]
 	}
 }
