@@ -8,23 +8,25 @@ import clsx from 'clsx';
 import styles from './navbar.module.scss';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-// import { useEffect, useState } from 'react'; //해결방법 1
+import { useEffect, useState } from 'react'; //해결방법 1
+import { useCustomText } from '@/hooks/useText';
 
 export default function Navbar({ textArr }) {
 	const time = new Date().getTime();
 	const pathName = usePathname();
-	// const [Client, setClient] = useState(false); //해결방법 1
+	const [Client, setClient] = useState(false); //해결방법 1
+	const setCapitalize = useCustomText('capitalize');
 
-	// useEffect(() => {
-	// 	setClient(true);
-	// }, []);
+	useEffect(() => {
+		setClient(true);
+	}, []);
 
 	return (
 		<nav className={clsx(styles.navbar)}>
 			{/* <h2>{Client && time}</h2> */}
 			{textArr.map(txt => (
 				<Link key={txt} href={`/${txt}`} className={clsx(pathName === '/' + txt ? styles.on : '')}>
-					{txt.charAt(0).toUpperCase() + txt.slice(1)}
+					{setCapitalize(txt)}
 				</Link>
 			))}
 		</nav>
