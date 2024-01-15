@@ -1,0 +1,17 @@
+{
+  "my-module-page": {
+	"scope": "javascript,typescript,javascriptreact",
+    "prefix": "mpage",
+    "body": [
+			"import clsx from 'clsx';",
+			"import styles from './${TM_DIRECTORY/^.+\\\\(.*)$/$1/}.module.scss';",
+			"",
+			"export default function ${TM_DIRECTORY/^.+\\\\(.*)$/${1:/capitalize}/}(){",
+			"\treturn <${2:section} className={clsx(styles.${TM_DIRECTORY/^.+\\\\(.*)$/$1/})}>",
+			"\t\t <h1>${TM_DIRECTORY/^.+\\\\(.*)$/${1:/capitalize}/}</h1>",
+			"\t\t$3",
+			"</${2:section}>",
+			"}"     
+    ]  
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "my-module-page": {
+		"scope": "javascript,typescript,javascriptreact",
+    "prefix": "mpage",
+    "body": [
+			"import clsx from 'clsx';",
+			"import styles from './${TM_DIRECTORY/^.+\\\\(.*)$/$1/}.module.scss';",
+			"",
+			"export default function ${TM_DIRECTORY/^.+\\\\(.*)$/${1:/capitalize}/}(){",
+			"\treturn <${2:div} className={clsx(styles.${TM_DIRECTORY/^.+\\\\(.*)$/$3/})}></${2:div}>",
+			"}"     
+    ]  
+  }
+}
+
+\src\app\youtube
