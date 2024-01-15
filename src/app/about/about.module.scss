@@ -1,2 +1,14 @@
+// @import '@/styles/variables.scss';
 .about {
+	h1 {
+		font-size: 2rem;
+	}
+}
+
+@media (max-width: $tablet) {
+	.about {
+		h1 {
+			color: hotpink;
+		}
+	}
 }
