@@ -1,11 +1,10 @@
 import clsx from 'clsx';
 import styles from './youtube.module.scss';
 import YoutubeCard from '@/components/youtubeCard/YoutubeCard';
-import { usePathname } from 'next/navigation';
 
 async function fetchYoutube() {
 	const api_key = 'AIzaSyDC60bIIkAJFzy7ji4a0Eo3AX6tYudhe1w';
-	const pid = 'PLYOPkdUKSFgUJeKpDIbI0H1wwgQO-hCZF';
+	const pid = process.env.NEXT_PUBLIC_YOUTUBE_API;
 	const num = 10;
 	const baseURL = `https://www.googleapis.com/youtube/v3/playlistItems?key=${api_key}&part=snippet&playlistId=${pid}&maxResults=${num}`;
 	const data = await fetch(baseURL);
