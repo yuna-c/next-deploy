@@ -10,16 +10,16 @@ mongoose: MongoDB에 구조맞게 모델 객체 스키마생성및 모델 데이
 */
 
 const mongoose = require('mongoose');
-let isConneted = false;
+let isConnected = false;
 
-export const connetDB = async () => {
+export const connectDB = async () => {
 	try {
-		if (isConneted) {
-			console.log('already connetced!');
+		if (isConnected) {
+			console.log('already connected!');
 			return;
 		}
 		const db = await mongoose.connect(process.env.NEXT_PUBLIC_MONGO_URI);
-		isConneted = db.connection[0].readyState;
+		isConnected = db.connections[0].readyState;
 	} catch (err) {
 		console.log(err);
 		throw new Error('Fail to connect DB!');
