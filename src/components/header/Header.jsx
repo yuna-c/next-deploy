@@ -6,7 +6,7 @@ import BtnLogin from '../btnLogin/BtnLogin';
 import BtnMenuToggle from '../btnMenuToggle/BtnMenuToggle';
 
 export default function Header() {
-	console.log('header');
+	// console.log('header');
 	return (
 		<header className={clsx(styles.header)}>
 			<h1>

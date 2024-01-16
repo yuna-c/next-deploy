@@ -10,6 +10,7 @@ mongoose: MongoDB에 구조맞게 모델 객체 스키마생성및 모델 데이
 */
 
 const mongoose = require('mongoose');
+//import mongoose from 'mongoose';
 let isConnected = false;
 
 export const connectDB = async () => {
