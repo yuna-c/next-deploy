@@ -15,12 +15,12 @@ import BtnMenuToggle from '../btnMenuToggle/BtnMenuToggle';
 // usePathname: 현재 url을 확인할 수 있는 훅, 쿼리스트링 값은 제외하고 가져옴, 동적라우팅
 
 export default function Header() {
-	console.log('header');
+	// console.log('header');
 
 	return (
 		<header className={clsx(styles.header)}>
 			<h1>
-				<Link href='/'>DCODELAB</Link>
+				<Link href='/'>NEXT.14</Link>
 			</h1>
 			<Navbar textArr={['about', 'youtube', 'post']} />
 			<BtnLogin session={true} /> {/* 서버사이드 랜더링 */}

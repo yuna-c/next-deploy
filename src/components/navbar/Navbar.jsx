@@ -13,7 +13,7 @@ import { useEffect, useState } from 'react'; //해결방법 1
 import { useCustomText } from '@/hooks/useText';
 
 export default function Navbar({ textArr }) {
-	console.log('nav');
+	// console.log('nav');
 	const time = new Date().getTime();
 	const pathName = usePathname(); //서버에 빌드 되고나서 한번 호출 되고 , 클라이언트에서 하이드레이션되는 것( 그래서 서버에서 한번은 프리 랜더가 됌)
 	const [Client, setClient] = useState(false); //해결방법 1

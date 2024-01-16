@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 import styles from './youtube.module.scss';
 import YoutubeCard from '@/components/youtubeCard/YoutubeCard';
+import { usePathname } from 'next/navigation';
 
 async function fetchYoutube() {
 	const api_key = 'AIzaSyDC60bIIkAJFzy7ji4a0Eo3AX6tYudhe1w';
@@ -18,7 +19,7 @@ export default async function Youtube() {
 		<section className={clsx(styles.youtube)}>
 			<h1>Youtube</h1>
 			{data.items.map((data, idx) => {
-				return <YoutubeCard key={data.id} data={data} isPriority={idx < 4 ? true : false} />;
+				return <YoutubeCard key={data.id} data={data} isPriority={idx < 4 ? true : false} isPrefetch={idx < 6 ? false : true} />;
 			})}
 		</section>
 	);
