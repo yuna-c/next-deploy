@@ -6,7 +6,6 @@ import BtnLogin from '../btnLogin/BtnLogin';
 // import dynamic from 'next/dynamic';
 import BtnMenuToggle from '../btnMenuToggle/BtnMenuToggle';
 
-// npm i react-icons
 // 기존 clinet 방식의 컴포넌트를 import 시 ssr: false를 통해 서버쪽에서 pre-build되지 않도록 설정
 // const NoSsrNavbar = dynamic(() => import('@/components/navbar/Navbar'), { ssr: false }); //ssr 서버사이드 랜더링 방식: false
 

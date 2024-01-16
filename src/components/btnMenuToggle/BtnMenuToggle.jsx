@@ -2,6 +2,7 @@
 import { useGlobalData } from '@/hooks/useGlobalData';
 import styles from './btnMenuToggle.module.scss';
 import { FaBarsStaggered } from 'react-icons/fa6';
+// npm i react-icons
 
 export default function BtnMenuToggle() {
 	const { MenuOpen, setMenuOpen } = useGlobalData();
