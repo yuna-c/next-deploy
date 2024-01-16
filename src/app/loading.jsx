@@ -1,9 +1,7 @@
-import clsx from 'clsx';
-
-export default function Loading() {
+export default function Loadind() {
 	return (
 		<section>
-			<h1>Loading...</h1>
+			<h1>loading...</h1>
 		</section>
 	);
 }

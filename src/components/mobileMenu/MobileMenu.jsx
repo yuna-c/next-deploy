@@ -22,7 +22,6 @@ export default function MobileMenu() {
 		window.addEventListener('resize', throttledClosePanel);
 		return () => window.removeEventListener('resize', throttledClosePanel);
 	}, [setMenuOpen, setThrottle]);
-
 	return (
 		<>
 			{MenuOpen && (
