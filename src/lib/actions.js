@@ -6,7 +6,7 @@ export const getPosts = async id => {
 		console.log('클라이언트 요청에 의해 DB접속 시작');
 		let posts = null;
 		if (id) {
-			posts = await Post.findeById(id);
+			posts = await Post.findById(id);
 		} else {
 			posts = await Post.find();
 		}
