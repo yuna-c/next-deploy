@@ -15,7 +15,7 @@ export default function Write() {
 
 				<nav>
 					<input type='reset' value='cancle' />
-					<input type='submit' value='write' onClick={console.log('save')} />
+					<input type='submit' value='write' />
 				</nav>
 			</form>
 		</section>
