@@ -8,7 +8,7 @@ export const getPosts = async id => {
 		connectDB();
 		let posts = null;
 		if (id) posts = await Post.findById(id);
-		else posts = await Post.find();
+		else posts = await Post.find().sort({ _id: -1 }); // 이미지 역순 변경
 		return posts;
 	} catch (err) {
 		console.log(err);
@@ -32,5 +32,5 @@ export const addPost = async formData => {
 	}
 
 	revalidatePath('/post'); //갱신
-	redirect('/post');
+	redirect('/post'); //글 저장 후 강제 목록 페이지 이동
 };
