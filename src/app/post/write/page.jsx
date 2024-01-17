@@ -10,11 +10,10 @@ export default function Write() {
 			<form action={addPost}>
 				<input type='text' placeholder='title' name='title' />
 				<input type='text' placeholder='image URL' name='img' />
-				<input type='file' />
-				<textarea name='desc' id='' cols='30' rows='3' placeholder='discription'></textarea>
+				<textarea name='desc' cols='30' rows='3' placeholder='description'></textarea>
 
 				<nav>
-					<input type='reset' value='cancle' />
+					<input type='reset' value='cancel' />
 					<input type='submit' value='write' />
 				</nav>
 			</form>
