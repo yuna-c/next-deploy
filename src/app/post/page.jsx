@@ -6,13 +6,15 @@ import Link from 'next/link';
 
 export default async function Post() {
 	const posts = await getPosts();
-	console.log(posts);
+	console.log(posts.reverse);
 
 	return (
 		<section className={clsx(styles.post)}>
 			<h1>Post</h1>
 			<nav>
 				<Link href='/post/write'>Write Post</Link>
+				<button>최신순</button>
+				<button>작성순</button>
 			</nav>
 
 			{posts.map(post => (
