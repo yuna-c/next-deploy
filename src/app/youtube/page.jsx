@@ -9,13 +9,11 @@ async function fetchYoutube() {
 	const baseURL = `https://www.googleapis.com/youtube/v3/playlistItems?key=${api_key}&part=snippet&playlistId=${pid}&maxResults=${num}`;
 	const data = await fetch(baseURL);
 	const resultData = await data.json();
-	console.log(resultData);
 	return resultData;
 }
 
 export default async function Youtube() {
 	const data = await fetchYoutube();
-	console.log(data);
 	return (
 		<section className={clsx(styles.youtube)}>
 			<h1>Youtube</h1>
