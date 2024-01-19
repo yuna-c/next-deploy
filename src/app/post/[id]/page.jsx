@@ -3,6 +3,8 @@ import styles from './postDetail.module.scss';
 import { deletePost, getPosts } from '@/lib/actions';
 import Image from 'next/image';
 import Link from 'next/link';
+import UserInfo from '@/components/userInfo/UserInfo';
+import { Suspense } from 'react';
 
 export default async function PostDetail({ params }) {
 	const { id } = params;
@@ -17,6 +19,11 @@ export default async function PostDetail({ params }) {
 				<div className={clsx(styles.txt)}>
 					<h2>{post.title}</h2>
 					<p>{post.desc}</p>
+					{post && (
+						<Suspense fallback={<p>Loading...</p>}>
+							<UserInfo email={post.email} />
+						</Suspense>
+					)}
 					<nav>
 						<Link href={`/post/edit/${id}`}>Edit</Link>
 						<form action={deletePost}>

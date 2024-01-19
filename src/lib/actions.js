@@ -12,7 +12,6 @@ export const getPosts = async id => {
 		connectDB();
 		let posts = null;
 		if (id) posts = await Post.findById(id);
-		else posts = await Post.find().sort({ _id: -1 });
 		return posts;
 	} catch (err) {
 		console.log(err);
@@ -38,11 +37,16 @@ export const getPostsPage = async page => {
 };
 
 export const addPost = async formData => {
-	const { title, img, desc } = Object.fromEntries(formData);
+	//const  = Object.fromEntries(formData);
+	const result = Object.fromEntries(formData);
+	console.log('result', result);
+	const { title, img, desc, email } = result;
+	console.log('email', email);
 
 	try {
 		connectDB();
-		const newPost = new Post({ title, img, desc });
+		const newPost = new Post({ title, img, desc, email: email });
+		console.log('newPost', newPost);
 		await newPost.save();
 	} catch (err) {
 		console.log(err);
@@ -87,22 +91,30 @@ export const updatePost = async formData => {
 	redirect('/post');
 };
 
-//User 데이터 추가 서버액션 함수
+export const getUser = async email => {
+	//console.log('getUserParam', email);
+	try {
+		connectDB();
+		const user = await User.findOne({ email: email });
+
+		return user;
+	} catch (err) {
+		console.log(err);
+		throw new Error('Fail to fetch User Info!');
+	}
+};
+
 export const addUser = async (previousState, formData) => {
 	const { username, email, password, img, repassword } = Object.fromEntries(formData);
 
-	if (password !== repassword) {
-		return { error: 'Passwords do not match' };
-	}
+	if (password !== repassword) return { error: 'Passwords do not match' };
 
 	try {
 		connectDB();
 
 		const user = await User.findOne({ username });
 
-		if (user) {
-			return { error: 'Username already exists' };
-		}
+		if (user) return { error: 'Username already exists' };
 
 		const salt = await bcrypt.genSalt(10);
 		const hashedPassword = await bcrypt.hash(password, salt);
@@ -124,7 +136,6 @@ export const addUser = async (previousState, formData) => {
 	}
 };
 
-//로그인 서버액션 함수
 export const handleLogin = async (prevState, formData) => {
 	console.log('handleLogin');
 	const { username, password } = Object.fromEntries(formData);
@@ -145,17 +156,14 @@ export const handleLogin = async (prevState, formData) => {
 	}
 };
 
-//깃허브 로그인 서버액션 함수
 export const handleGitHubLogin = async () => {
 	await signIn('github');
 };
 
-//구글 로그인 서버액션 함수
 export const handleGoogleLogin = async () => {
 	await signIn('google');
 };
 
-//로그아웃 서버액션 함수
 export const handleLogout = async () => {
 	'use server';
 	await signOut();
