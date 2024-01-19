@@ -4,6 +4,7 @@ import CredentialsProvider from 'next-auth/providers/credentials';
 import { connectDB } from './connectDB';
 import { User } from './models';
 import bcrypt from 'bcryptjs';
+// 암호화 위한 미들웨어
 import { authConfig } from './auth.config';
 
 //로그인정보 DB정보에서 찾아서 인증 함수
@@ -12,7 +13,7 @@ const checkUserDB = async credentials => {
 		connectDB();
 
 		const user = await User.findOne({ username: credentials.username });
-		if (!user) throw new Error('Wrong credentials!');
+		if (!user) throw new Error('there is no ');
 
 		const isPasswordCorrect = await bcrypt.compare(credentials.password, user.password);
 		if (!isPasswordCorrect) throw new Error('Wrong credentials!');
