@@ -67,6 +67,7 @@ export const {
 					// console.log('user', user);
 					// console.log('account', account);
 					// console.log('profile', profile);
+					// email: profile.email <!== 스키마
 					const user = await User.findOne({ email: profile.email });
 
 					if (!user) {
@@ -85,6 +86,7 @@ export const {
 			}
 			if (account.provider === 'google') {
 				console.log('google', account);
+				connectDB();
 			}
 			return true;
 		},
