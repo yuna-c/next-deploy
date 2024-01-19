@@ -1,6 +1,7 @@
 import NextAuth from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import Github from 'next-auth/providers/github';
+
 import { connectDB } from './connectDB';
 import { User } from './models';
 import bcrypt from 'bcryptjs';
@@ -53,9 +54,30 @@ export const {
 	//인증이 성공완료된 자동 실행될 callback함수(외부 autoConfig에서 가져옴)
 	callbacks: {
 		async signIn({ user, account, profile }) {
-			console.log('user', user);
-			console.log('account', account);
-			console.log('profile', profile);
+			if (account.provider === 'github') {
+				// console.log(account);
+				connectDB();
+
+				try {
+					// console.log('user', user);
+					// console.log('account', account);
+					// console.log('profile', profile);
+					const user = await User.findOne({ email: profile.email });
+
+					if (!user) {
+						const newUser = new User({
+							username: profile.login,
+							email: profile.email,
+							img: profile.avatar_url
+						});
+
+						await newUser.save();
+					}
+				} catch (err) {
+					console.log(err);
+					return false;
+				}
+			}
 			return true;
 		},
 		//기존 auth.config에 있는 callbacks는 override되면 안되기에 아래쪽에서 재 override처리
