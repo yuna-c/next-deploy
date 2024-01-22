@@ -12,6 +12,8 @@ export default async function PostDetail({ params }) {
 	const post = await getPosts(id);
 	const session = await auth();
 
+	console.log('owner', session);
+
 	return (
 		<section className={clsx(styles.postDetail)}>
 			<h1>PostDetail</h1>
@@ -26,7 +28,8 @@ export default async function PostDetail({ params }) {
 							<UserInfo email={post.email} />
 						</Suspense>
 					)}
-					{session?.user.email === post.email && (
+
+					{(session?.user.email === post.email || session?.user.owner === true) && (
 						<nav>
 							<Link href={`/post/edit/${id}`}>Edit</Link>
 							<form action={deletePost}>
