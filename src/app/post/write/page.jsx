@@ -19,6 +19,7 @@ export default async function Write() {
 					<input type='text' placeholder='title' name='title' />
 					<InputImage />
 					<ImageUploader />
+					{/* 파일 업로더  */}
 					<textarea name='desc' cols='30' rows='3' placeholder='description'></textarea>
 
 					<nav>
