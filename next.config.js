@@ -1,4 +1,5 @@
 /** @type {import('next').NextConfig} */
+const { ZCOOL_KuaiLe } = require('next/font/google');
 const path = require('path');
 
 const nextConfig = {
