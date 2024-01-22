@@ -1,32 +1,20 @@
-// npm install uploadthing @uploadthing/react
 import { createUploadthing } from 'uploadthing/next';
-
 const f = createUploadthing();
+const auth = req => ({ id: 'yuna' }); // 인증 함수
 
-const auth = req => ({ id: 'yuna' }); // Fake auth function
-
-// FileRouter for your app, can contain multiple FileRoutes
+//file업로드 관련 route함수
 export const ourFileRouter = {
-	// Define as many FileRoutes as you like, each with a unique routeSlug
+	//이미지는 파일당 최대 4mb까지 등록 가능
 	imageUploader: f({ image: { maxFileSize: '4MB' } })
-		// Set permissions and file types for this FileRoute
 		.middleware(async ({ req }) => {
-			// This code runs on your server before upload
 			const user = await auth(req);
-
-			// If you throw, the user will not be able to upload
 			if (!user) throw new Error('Unauthorized');
-
-			// Whatever is returned here is accessible in onUploadComplete as `metadata`
 			return { userId: user.id };
 		})
+		//파일업로드가 성공적으로 완료되었을때 실행될 complete함수
 		.onUploadComplete(async ({ metadata, file }) => {
-			// This code RUNS ON YOUR SERVER after upload
 			console.log('Upload complete for userId:', metadata.userId);
-
 			console.log('file url', file.url);
-
-			// !!! Whatever is returned here is sent to the clientside `onClientUploadComplete` callback
 			return { uploadedBy: metadata.userId };
 		})
 };
