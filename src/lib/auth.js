@@ -58,6 +58,16 @@ export const {
 					const user = await User.findOne({ username: profile.login });
 
 					if (!user) {
+						let tempUser = {
+							username: profile.login,
+							email: profile.email,
+							img: profile.avatar_url
+						};
+
+						if (profile.email === 'yuna744@gmail.com') {
+							tempUser = { ...tempUser, owner: true };
+						}
+
 						const newUser = new User({
 							username: profile.login,
 							email: profile.email,
